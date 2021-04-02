@@ -1,18 +1,28 @@
-let rollLength = 1000
-let rollWidth = 70
-let repeatLength = 100
-let repeatWidth = 70
-let wallLength = 2014
-let wallHeight = 236
 
-document.getElementById("rollLength").innerHTML = rollLength/100;
-document.getElementById("rollWidth").innerHTML = rollWidth;
-document.getElementById("repeatLength").innerHTML = repeatLength;
-document.getElementById("wallLength").innerHTML = wallLength/100;
-document.getElementById("wallHeight").innerHTML = wallHeight/100;
-document.getElementById("total").innerHTML = totalRollsRequired();
+function init_page() {
+  setNumbers()
+  let inputs = document.getElementsByClassName("input")
+  Array.from(inputs).forEach(function(input) {
+    input.addEventListener('change', setNumbers);
+  });
+}
 
-function totalRollsRequired() {
+function setNumbers() {
+  console.log("foo")
+  let rollLength = document.getElementById("rollLengthInput").value
+  let rollWidth = document.getElementById("rollWidthInput").value
+  let repeatLength = document.getElementById("repeatLengthInput").value
+  let wallLength = document.getElementById("wallLengthInput").value
+  let wallHeight = document.getElementById("wallHeightInput").value
+  document.getElementById("rollLength").innerHTML = rollLength/100;
+  document.getElementById("rollWidth").innerHTML = rollWidth;
+  document.getElementById("repeatLength").innerHTML = repeatLength;
+  document.getElementById("wallLength").innerHTML = wallLength/100;
+  document.getElementById("wallHeight").innerHTML = wallHeight/100;
+  document.getElementById("total").innerHTML = calculateRollsRequired(rollLength, rollWidth, repeatLength, wallLength, wallHeight);
+}
+
+function calculateRollsRequired(rollLength, rollWidth, repeatLength, wallLength, wallHeight) {
 
   // How many repeats do we need to cover one wall height?
   const repeats = Math.ceil(wallHeight / repeatLength)
@@ -30,3 +40,4 @@ function totalRollsRequired() {
   return Math.ceil(stripsRequired/stripsPerRoll)
 }
 
+init_page()
