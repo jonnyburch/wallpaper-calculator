@@ -8,7 +8,6 @@ function init_page() {
 }
 
 function setNumbers() {
-  console.log("foo")
   let rollLength = document.getElementById("rollLengthInput").value
   let rollWidth = document.getElementById("rollWidthInput").value
   let repeatLength = document.getElementById("repeatLengthInput").value
