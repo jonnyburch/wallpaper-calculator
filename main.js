@@ -2,8 +2,15 @@ let rollLength = 1000
 let rollWidth = 70
 let repeatLength = 100
 let repeatWidth = 70
-let wallLength = 1240
-let wallHeight = 235
+let wallLength = 2014
+let wallHeight = 236
+
+document.getElementById("rollLength").innerHTML = rollLength/100;
+document.getElementById("rollWidth").innerHTML = rollWidth;
+document.getElementById("repeatLength").innerHTML = repeatLength;
+document.getElementById("wallLength").innerHTML = wallLength/100;
+document.getElementById("wallHeight").innerHTML = wallHeight/100;
+document.getElementById("total").innerHTML = totalRollsRequired();
 
 function totalRollsRequired() {
 
@@ -23,4 +30,3 @@ function totalRollsRequired() {
   return Math.ceil(stripsRequired/stripsPerRoll)
 }
 
-document.getElementById("total").innerHTML = totalRollsRequired();
