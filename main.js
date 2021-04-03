@@ -13,12 +13,12 @@ function setNumbers() {
   let repeatLength = document.getElementById("repeatLengthInput").value
   let wallLength = document.getElementById("wallLengthInput").value
   let wallHeight = document.getElementById("wallHeightInput").value
-  document.getElementById("rollLength").innerHTML = rollLength/100;
-  document.getElementById("rollWidth").innerHTML = rollWidth;
-  document.getElementById("repeatLength").innerHTML = repeatLength;
-  document.getElementById("wallLength").innerHTML = wallLength/100;
-  document.getElementById("wallHeight").innerHTML = wallHeight/100;
-  document.getElementById("total").innerHTML = calculateRollsRequired(rollLength, rollWidth, repeatLength, wallLength, wallHeight);
+  const calc = calculateRollsRequired(rollLength, rollWidth, repeatLength, wallLength, wallHeight)
+  console.log(calc)
+  document.getElementById("stripLength").innerHTML = calc[0];
+  document.getElementById("stripsToCover").innerHTML = calc[1];
+  document.getElementById("stripsPerRoll").innerHTML = calc[2];
+  document.getElementById("total").innerHTML = calc[3];
 }
 
 function calculateRollsRequired(rollLength, rollWidth, repeatLength, wallLength, wallHeight) {
@@ -36,7 +36,7 @@ function calculateRollsRequired(rollLength, rollWidth, repeatLength, wallLength,
   const stripsPerRoll = Math.floor(rollLength/lengthPerStrip)
 
   // Return the total number of rolls required
-  return Math.ceil(stripsRequired/stripsPerRoll)
+  return [lengthPerStrip, stripsRequired, stripsPerRoll, Math.ceil(stripsRequired/stripsPerRoll)]
 }
 
 init_page()
