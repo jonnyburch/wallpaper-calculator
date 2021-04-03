@@ -73,13 +73,22 @@ function calculateRollsRequired(rollLength, rollWidth, repeatLength, wallLength,
 
 function updateFromUrlParams() {
   const urlParams = getAllUrlParams(url)
-  console.log(urlParams)
   if (!isEmpty(urlParams)) {
-    document.getElementById("rollLengthInput").value = parseInt(urlParams.rol)
-    document.getElementById("rollWidthInput").value = parseInt(urlParams.row)
-    document.getElementById("repeatLengthInput").value = parseInt(urlParams.repl)
-    document.getElementById("wallLengthInput").value = parseInt(urlParams.wl)
-    document.getElementById("wallHeightInput").value = parseInt(urlParams.wh)
+    if (urlParams.rol) {
+      document.getElementById("rollLengthInput").value = parseInt(urlParams.rol)
+    }
+    if (urlParams.row) {
+      document.getElementById("rollWidthInput").value = parseInt(urlParams.row)
+    }
+    if (urlParams.repl) {
+      document.getElementById("repeatLengthInput").value = parseInt(urlParams.repl)
+    }
+    if (urlParams.wl) {
+      document.getElementById("wallLengthInput").value = parseInt(urlParams.wl)
+    }
+    if (urlParams.wh) {
+      document.getElementById("wallHeightInput").value = parseInt(urlParams.wh)
+    }
   }
 }
 
