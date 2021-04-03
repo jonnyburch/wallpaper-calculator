@@ -11,108 +11,119 @@
     <header class="py-4">
       <h3 class="pb-4 font-semibold text-2xl text-lq-darkgreen">Wallpaper Calculator</h3>
     </header>
-    <div class="container w-full lg:w-3/4 p-4 flex-grow flex items-center">
-      <div class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-12">
-        <div class="flex flex-col">
-          <div class="grid grid-cols-3 pb-2">
-            <div class="col-span-3">
-              <label for="rollLengthInput" class="block text-sm font-medium text-lq-textbeige">
-                Roll length
-              </label>
-              <div class="mt-1 flex rounded-md shadow-sm">
-                <input type="number" name="rollLengthInput" id="rollLengthInput" class="input focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="1000">
-                <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
-                  cm
-                </span>
-              </div>
-            </div>
-          </div>
+    <div class="container w-full lg:w-3/4 p-4 flex-grow flex flex-col justify-center">
+      <div class="flex items-center">
+        <div class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
+          <div class="flex flex-col">
 
-          <div class="grid grid-cols-3 gap-6 pb-2">
-            <div class="col-span-3">
-              <label for="rollWidthInput" class="block text-sm font-medium text-lq-textbeige">
-                Roll width
-              </label>
-              <div class="mt-1 flex rounded-md shadow-sm">
-                <input type="number" name="rollWidthInput" id="rollWidthInput" class="input focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="70">
-                <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
-                  cm
-                </span>
+            <h3 class="block text-sm font-medium text-lq-textbeige opacity-75 pb-2 border-b border-lq-darkbeige mb-3">Your paper</h3>
+            <div class="grid grid-cols-3 gap-3 pb-6">
+              <div class="col-span-1 grid grid-cols-3 pb-2">
+                <div class="col-span-3">
+                  <label for="rollLengthInput" class="block text-sm font-medium text-lq-textbeige">
+                    Roll length
+                  </label>
+                  <div class="mt-1 flex rounded-md shadow-sm">
+                    <input type="number" name="rollLengthInput" id="rollLengthInput" class="input focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="1000">
+                    <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
+                      cm
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <div class="grid grid-cols-3 gap-6 pb-2">
-            <div class="col-span-3">
-              <label for="repeatLengthInput" class="block text-sm font-medium text-lq-textbeige">
-                Repeat Length
-              </label>
-              <div class="mt-1 flex rounded-md shadow-sm">
-                <input type="number" name="repeatLengthInput" id="repeatLengthInput" class="input focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="70">
-                <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
-                  cm
-                </span>
+              <div class="col-span-1 grid grid-cols-3 gap-6 pb-2">
+                <div class="col-span-3">
+                  <label for="rollWidthInput" class="block text-sm font-medium text-lq-textbeige">
+                    Roll width
+                  </label>
+                  <div class="mt-1 flex rounded-md shadow-sm">
+                    <input type="number" name="rollWidthInput" id="rollWidthInput" class="input focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="70">
+                    <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
+                      cm
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-span-1 grid grid-cols-3 gap-6 pb-2">
+                <div class="col-span-3">
+                  <label for="repeatLengthInput" class="block text-sm font-medium text-lq-textbeige">
+                    Repeat Length
+                  </label>
+                  <div class="mt-1 flex rounded-md shadow-sm">
+                    <input type="number" name="repeatLengthInput" id="repeatLengthInput" class="input focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="70">
+                    <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
+                      cm
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div class="grid grid-cols-3 gap-6 pb-2">
-            <div class="col-span-3">
-              <label for="wallLengthInput" class="block text-sm font-medium text-lq-textbeige">
-                Total Wall Length
-              </label>
-              <div class="mt-1 flex rounded-md shadow-sm">
-                <input type="number" name="wallLengthInput" id="wallLengthInput" class="input focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="600">
-                <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
-                  cm
-                </span>
+            <h3 class="block text-sm font-medium text-lq-textbeige opacity-75 pb-2 border-b border-lq-darkbeige mb-3">Your walls</h3>
+            <div class="grid grid-cols-2 gap-3 pb-6">
+              <div class="col-span-1 grid grid-cols-3 gap-6 pb-2">
+                <div class="col-span-3">
+                  <label for="wallLengthInput" class="block text-sm font-medium text-lq-textbeige">
+                    Length of Wall
+                  </label>
+                  <div class="mt-1 flex rounded-md shadow-sm">
+                    <input type="number" name="wallLengthInput" id="wallLengthInput" class="input focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="600">
+                    <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
+                      cm
+                    </span>
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
 
-          <div class="grid grid-cols-3 gap-6 pb-2">
-            <div class="col-span-3">
-              <label for="wallHeightInput" class="block text-sm font-medium text-lq-textbeige">
-                Wall height
-              </label>
-              <div class="mt-1 flex rounded-md shadow-sm">
-                <input type="number" name="wallHeightInput" id="wallHeightInput" class="input focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="250">
-                <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
-                  cm
-                </span>
+              <div class="col-span-1 grid grid-cols-3 gap-6 pb-2">
+                <div class="col-span-3">
+                  <label for="wallHeightInput" class="block text-sm font-medium text-lq-textbeige">
+                    Wall height
+                  </label>
+                  <div class="mt-1 flex rounded-md shadow-sm">
+                    <input type="number" name="wallHeightInput" id="wallHeightInput" class="input focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="250">
+                    <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
+                      cm
+                    </span>
+                  </div>
+                </div>
               </div>
+            </div>
+            <div class="pb-2 text-lq-textbeige">
+              <p class="break-words text-sm opacity-50">Share these dimensions: <span id="shareUrl"></span></p>
             </div>
           </div>
-        </div>
-        <div class="rounded bg-white shadow-2xl p-6 flex flex-col">
-          <div class="flex-grow text-lq-textbeige">
-            <div class="border-b py-3 border-lq-beige flex gap-2">
-              <div class="transform rotate-180 w-4 h-4 flex-shrink-0 mt-1">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-                </svg>
+          <div class="rounded bg-white shadow-xl flex flex-col">
+            <div class="flex-grow text-lq-textbeige p-6">
+              <div class="border-b py-3 border-lq-beige flex gap-2">
+                <div class="transform rotate-180 w-4 h-4 flex-shrink-0 mt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+                  </svg>
+                </div>
+                <p class="">Each strip of paper needs to be <span id="stripLength">0</span>cm</p>
               </div>
-              <p class="">Each strip of paper needs to be <span id="stripLength">0</span>cm</p>
-            </div>
-            <div class="border-b py-3 border-lq-beige flex gap-2">
-              <div class="transform rotate-180 w-4 h-4 flex-shrink-0 mt-1">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-                </svg>
+              <div class="border-b py-3 border-lq-beige flex gap-2">
+                <div class="transform rotate-180 w-4 h-4 flex-shrink-0 mt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+                  </svg>
+                </div>
+                <p class="">You'll need <span id="stripsToCover">0</span> to cover your walls</p>
               </div>
-              <p class="">You'll need <span id="stripsToCover">0</span> strips to cover your walls</p>
-            </div>
-            <div class="border-b py-3 border-lq-beige flex gap-2">
-              <div class="transform rotate-180 w-4 h-4 flex-shrink-0 mt-1">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-                </svg>
+              <div class="py-3 flex gap-2">
+                <div class="transform rotate-180 w-4 h-4 flex-shrink-0 mt-1">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
+                  </svg>
+                </div>
+                <p class="">Each roll of this wallpaper will fit <span id="stripsPerRoll">0</span> in it</p>
               </div>
-              <p class="">Each roll of this wallpaper will fit <span id="stripsPerRoll">0</span> strips in it</p>
             </div>
-          </div>
-          <div class="border-t border-lq-darkbeige">
-            <p class="pt-3 text-lg text-lq-textbeige">You'll need <span class="font-bold"><span id="total">0</span> rolls</span> in total</p>
+            <div class="bg-lq-darkbeige p-6">
+              <p class="text-lg text-lq-textbeige">You'll need <span id="total" class="font-bold">0</span> in total</p>
+            </div>
           </div>
         </div>
       </div>

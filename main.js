@@ -1,15 +1,30 @@
+const url = window.location.search
+const urlParamNames = {
+  "rol": "rollLength",
+  "row": "rollWidth",
+  "repl": "repeatLength",
+  "wl": "wallLength",
+  "wh": "wallHeight"
+}
+const rollLength = document.getElementById("rollLengthInput").value
+const rollWidth = document.getElementById("rollWidthInput").value
+const repeatLength = document.getElementById("repeatLengthInput").value
+const wallLength = document.getElementById("wallLengthInput").value
+const wallHeight = document.getElementById("wallHeightInput").value
+
 function init_page() {
-  getUrlParams()
-  setNumbers()
   setEventListeners()
+  setNumbers()
+  updateFromUrlParams()
+  updateUrl()
 }
 
 function setNumbers() {
-  let rollLength = document.getElementById("rollLengthInput").value
-  let rollWidth = document.getElementById("rollWidthInput").value
-  let repeatLength = document.getElementById("repeatLengthInput").value
-  let wallLength = document.getElementById("wallLengthInput").value
-  let wallHeight = document.getElementById("wallHeightInput").value
+  const rollLength = document.getElementById("rollLengthInput").value
+  const rollWidth = document.getElementById("rollWidthInput").value
+  const repeatLength = document.getElementById("repeatLengthInput").value
+  const wallLength = document.getElementById("wallLengthInput").value
+  const wallHeight = document.getElementById("wallHeightInput").value
   const calc = calculateRollsRequired(rollLength, rollWidth, repeatLength, wallLength, wallHeight)
   document.getElementById("stripLength").innerHTML = calc[0];
   document.getElementById("stripsToCover").innerHTML = calc[1];
@@ -18,10 +33,20 @@ function setNumbers() {
 }
 
 function setEventListeners() {
-  let inputs = document.getElementsByClassName("input")
+  const inputs = document.getElementsByClassName("input")
   Array.from(inputs).forEach(function(input) {
-    input.addEventListener('change', setNumbers);
+    input.addEventListener('change', setNumbers)
+    input.addEventListener('change', updateUrl)
   });
+}
+
+function updateUrl() {
+  const baseurl = window.location.href.split('?')[0]
+  console.log(rollLength)
+  const queryString = `?rol=${rollLength}&row=${rollWidth}&repl=${repeatLength}&wl=${wallLength}&wh=${wallHeight}`
+  const queryUrl = `<a class="underline" href="${baseurl}${queryString}">${baseurl}${queryString}</a>`
+  const newUrl = [queryString, queryUrl]
+  document.getElementById("shareUrl").innerHTML = newUrl[1]
 }
 
 function calculateRollsRequired(rollLength, rollWidth, repeatLength, wallLength, wallHeight) {
@@ -38,19 +63,25 @@ function calculateRollsRequired(rollLength, rollWidth, repeatLength, wallLength,
   // How many strips fit into the length of a roll?
   const stripsPerRoll = Math.floor(rollLength/lengthPerStrip)
 
+  const total = Math.ceil(stripsRequired/stripsPerRoll)
+
+  function pluralise(strips) {
+    return strips == 1 ? `${strips} strip` : `${strips} strips`
+  }
   // Return the total number of rolls required
-  return [lengthPerStrip, stripsRequired, stripsPerRoll, Math.ceil(stripsRequired/stripsPerRoll)]
+  return [lengthPerStrip, pluralise(stripsRequired), pluralise(stripsPerRoll), `${total} ${total === 1 ? "roll" : "rolls"}`]
 }
 
-function getUrlParams() {
-  const url = window.location.search
+function updateFromUrlParams() {
   const urlParams = getAllUrlParams(url)
-  console.log(urlParams.rol)
-  document.getElementById("rollLengthInput").value = parseInt(urlParams.rol)
-  document.getElementById("rollWidthInput").value = parseInt(urlParams.row)
-  document.getElementById("repeatLengthInput").value = parseInt(urlParams.repl)
-  document.getElementById("wallLengthInput").value = parseInt(urlParams.wl)
-  document.getElementById("wallHeightInput").value = parseInt(urlParams.wh)
+  console.log(urlParams)
+  if (!isEmpty(urlParams)) {
+    document.getElementById("rollLengthInput").value = parseInt(urlParams.rol)
+    document.getElementById("rollWidthInput").value = parseInt(urlParams.row)
+    document.getElementById("repeatLengthInput").value = parseInt(urlParams.repl)
+    document.getElementById("wallLengthInput").value = parseInt(urlParams.wl)
+    document.getElementById("wallHeightInput").value = parseInt(urlParams.wh)
+  }
 }
 
 function getAllUrlParams(url) {
@@ -116,6 +147,9 @@ function getAllUrlParams(url) {
   }
 
   return obj;
+}
+function isEmpty(obj) {
+  return Object.keys(obj).length === 0;
 }
 
 init_page()
