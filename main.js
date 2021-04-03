@@ -16,7 +16,6 @@ function init_page() {
   setEventListeners()
   setNumbers()
   updateFromUrlParams()
-  updateUrl()
 }
 
 function setNumbers() {
@@ -30,23 +29,23 @@ function setNumbers() {
   document.getElementById("stripsToCover").innerHTML = calc[1];
   document.getElementById("stripsPerRoll").innerHTML = calc[2];
   document.getElementById("total").innerHTML = calc[3];
+  updateUrl(rollLength, rollWidth, repeatLength, wallLength, wallHeight)
 }
 
 function setEventListeners() {
   const inputs = document.getElementsByClassName("input")
   Array.from(inputs).forEach(function(input) {
     input.addEventListener('change', setNumbers)
-    input.addEventListener('change', updateUrl)
   });
 }
 
-function updateUrl() {
+function updateUrl(rollLength, rollWidth, repeatLength, wallLength, wallHeight) {
   const baseurl = window.location.href.split('?')[0]
-  console.log(rollLength)
   const queryString = `?rol=${rollLength}&row=${rollWidth}&repl=${repeatLength}&wl=${wallLength}&wh=${wallHeight}`
   const queryUrl = `<a class="underline" href="${baseurl}${queryString}">${baseurl}${queryString}</a>`
   const newUrl = [queryString, queryUrl]
   document.getElementById("shareUrl").innerHTML = newUrl[1]
+  history.pushState(null, null, newUrl[0]);
 }
 
 function calculateRollsRequired(rollLength, rollWidth, repeatLength, wallLength, wallHeight) {
