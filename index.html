@@ -7,10 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Wallpaper Calculator by Living Quarters</title>
   </head>
-  <body class="bg-lq-beige flex items-center h-screen w-screen justify-center">
+  <body class="bg-lq-beige flex items-center h-auto min-h-screen w-screen justify-center">
     <div class="container w-full lg:w-3/4 p-4">
       <h3 class="pb-4 font-semibold text-2xl text-lq-darkgreen">Wallpaper Calculator</h3>
-      <div class="grid grid-cols-2 gap-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="flex flex-col">
           <div class="grid grid-cols-3 gap-6 pb-2">
             <div class="col-span-3">
@@ -82,25 +82,24 @@
             </div>
           </div>
         </div>
-        <div class="rounded bg-white shadow-2xl p-6 ">
-          <div class="border-b border-lq-darkbeige">
-            <p class="pb-3 text-lq-darkgreen">Summary</p>
+        <div class="rounded bg-white shadow-2xl p-6 flex flex-col">
+          <div class="flex-grow">
+            <div class="border-b border-lq-beige">
+              <p class="pb-3 text-lq-textbeige">Each strip of paper needs to be <span id="stripLength">0</span>cm to be able to match up your repeats</p>
+            </div>
+            <div class="border-b border-lq-beige">
+              <p class="py-3 text-lq-textbeige">You'll need <span id="stripsToCover">0</span> strips to cover your walls</p>
+            </div>
+            <div class="border-b border-lq-beige">
+              <p class="py-3 text-lq-textbeige">Each roll of this wallpaper will have <span id="stripsPerRoll">0</span> strips in it</p>
+            </div>
           </div>
-          <div class="border-b border-lq-beige">
-            <p class="py-3 text-lq-textbeige">Each strip of paper needs to be <span id="stripLength"></span>cm to be able to match up your repeats</p>
-          </div>
-          <div class="border-b border-lq-beige">
-            <p class="py-3 text-lq-textbeige">You'll need <span id="stripsToCover"></span> strips to cover your walls</p>
-          </div>
-          <div class="border-b border-lq-darkbeige">
-            <p class="py-3 text-lq-textbeige">Each roll will have <span id="stripsPerRoll"></span> strips in it</p>
-          </div>
-          <div class="border-b border-lq-darkbeige">
-            <p class="py-3 text-lg">You'll need <span class="font-bold"><span id="total">0</span> rolls</span> in total</p>
+          <div class="border-t border-lq-darkbeige">
+            <p class="pt-3 text-lg text-lq-textbeige">You'll need <span class="font-bold"><span id="total">0</span> rolls</span> in total</p>
           </div>
         </div>
       </div>
-      <p class="pt-4">Brought to you by <a class="underline text-lq-darkgreen" href="https://living-quarters.co">Living Quarters</a></p>
+      <p class="pt-4 text-lq-textbeige">Brought to you by <a class="underline text-lq-darkgreen" href="https://living-quarters.co">Living Quarters</a></p>
     </div>
     <script type="module" src="/main.js"></script>
   </body>
