@@ -584,6 +584,10 @@ function populatePresetDropdown(presets) {
 
   console.log('Populating dropdown with', presets.length, 'presets')
 
+  // Clear loading state and enable dropdown
+  select.innerHTML = ''
+  select.removeAttribute('disabled')
+
   // Add preset options to the dropdown
   presets.forEach(preset => {
     const option = document.createElement('option')

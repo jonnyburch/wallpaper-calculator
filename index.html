@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Wallpaper Calculator by Living Quarters</title>
 </head>
-<body class="bg-lq-beige flex flex-col items-center justify-center h-auto min-h-screen w-screen justify-center relative overflow-x-hidden">
+<body class="bg-lq-darkgreen flex flex-col items-center justify-center h-auto min-h-screen w-screen justify-center relative overflow-x-hidden">
   <!-- Wallpaper Background Preview -->
   <div id="wallpaperBackground" class="fixed inset-0 bg-cover bg-center transition-opacity duration-500 opacity-0 pointer-events-none" style="z-index: 0;"></div>
 
@@ -37,7 +37,8 @@
               <label for="presetSelect" class="block text-sm font-medium text-lq-textbeige mb-2">
                 Select a wallpaper
               </label>
-              <select id="presetSelect" class="w-full rounded-md py-2 pl-2 pr-8 bg-white text-lq-textbeige focus:ring-0 focus:outline-none shadow-sm">
+              <select id="presetSelect" class="w-full rounded-md py-2 pl-2 pr-8 bg-white text-lq-textbeige focus:ring-0 focus:outline-none shadow-sm" disabled>
+                <option>Loading wallpapers...</option>
               </select>
             </div>
           </div>
