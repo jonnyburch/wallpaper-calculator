@@ -6,11 +6,6 @@ const urlParamNames = {
   "wl": "wallLength",
   "wh": "wallHeight"
 }
-const rollLength = document.getElementById("rollLengthInput").value
-const rollWidth = document.getElementById("rollWidthInput").value
-const repeatLength = document.getElementById("repeatLengthInput").value
-const wallLength = document.getElementById("wallLengthInput").value
-const wallHeight = document.getElementById("wallHeightInput").value
 
 function init_page() {
   setEventListeners()
@@ -19,11 +14,11 @@ function init_page() {
 }
 
 function setNumbers() {
-  const rollLength = document.getElementById("rollLengthInput").value
-  const rollWidth = document.getElementById("rollWidthInput").value
-  const repeatLength = document.getElementById("repeatLengthInput").value
-  const wallLength = document.getElementById("wallLengthInput").value
-  const wallHeight = document.getElementById("wallHeightInput").value
+  const rollLength = parseFloat(document.getElementById("rollLengthInput").value)
+  const rollWidth = parseFloat(document.getElementById("rollWidthInput").value)
+  const repeatLength = parseFloat(document.getElementById("repeatLengthInput").value)
+  const wallLength = parseFloat(document.getElementById("wallLengthInput").value)
+  const wallHeight = parseFloat(document.getElementById("wallHeightInput").value)
   const calc = calculateRollsRequired(rollLength, rollWidth, repeatLength, wallLength, wallHeight)
   document.getElementById("stripLength").innerHTML = calc[0];
   document.getElementById("stripsToCover").innerHTML = calc[1];
@@ -49,6 +44,20 @@ function updateUrl(rollLength, rollWidth, repeatLength, wallLength, wallHeight) 
 }
 
 function calculateRollsRequired(rollLength, rollWidth, repeatLength, wallLength, wallHeight) {
+  // Convert to numbers and validate
+  rollLength = Number(rollLength)
+  rollWidth = Number(rollWidth)
+  repeatLength = Number(repeatLength)
+  wallLength = Number(wallLength)
+  wallHeight = Number(wallHeight)
+
+  // Check for invalid inputs
+  if (isNaN(rollLength) || isNaN(rollWidth) || isNaN(repeatLength) ||
+      isNaN(wallLength) || isNaN(wallHeight) ||
+      rollLength <= 0 || rollWidth <= 0 || repeatLength <= 0 ||
+      wallLength <= 0 || wallHeight <= 0) {
+    return [0, "0 strips", "0 strips", "0 rolls"]
+  }
 
   // How many repeats do we need to cover one wall height?
   const repeats = Math.ceil(wallHeight / repeatLength)
@@ -75,19 +84,19 @@ function updateFromUrlParams() {
   const urlParams = getAllUrlParams(url)
   if (!isEmpty(urlParams)) {
     if (urlParams.rol) {
-      document.getElementById("rollLengthInput").value = parseInt(urlParams.rol)
+      document.getElementById("rollLengthInput").value = parseFloat(urlParams.rol)
     }
     if (urlParams.row) {
-      document.getElementById("rollWidthInput").value = parseInt(urlParams.row)
+      document.getElementById("rollWidthInput").value = parseFloat(urlParams.row)
     }
     if (urlParams.repl) {
-      document.getElementById("repeatLengthInput").value = parseInt(urlParams.repl)
+      document.getElementById("repeatLengthInput").value = parseFloat(urlParams.repl)
     }
     if (urlParams.wl) {
-      document.getElementById("wallLengthInput").value = parseInt(urlParams.wl)
+      document.getElementById("wallLengthInput").value = parseFloat(urlParams.wl)
     }
     if (urlParams.wh) {
-      document.getElementById("wallHeightInput").value = parseInt(urlParams.wh)
+      document.getElementById("wallHeightInput").value = parseFloat(urlParams.wh)
     }
   }
 }
