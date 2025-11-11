@@ -1,136 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="stylesheet" href="/style.css">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Wallpaper Calculator by Living Quarters</title>
-  </head>
-  <body class="bg-lq-beige flex flex-col items-center justify-center h-auto min-h-screen w-screen justify-center">
-    <header class="py-4">
-      <h3 class="pb-4 font-semibold text-2xl text-lq-darkgreen">Wallpaper Calculator</h3>
-    </header>
-    <div class="w-full lg:w-3/4 p-4 flex-grow flex flex-col justify-center">
-      <div class="flex items-center">
-        <div class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12">
-          <div class="flex flex-col">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="stylesheet" href="/style.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wallpaper Calculator by Living Quarters</title>
+</head>
+<body class="bg-lq-darkgreen flex flex-col items-center justify-center h-auto min-h-screen w-screen relative overflow-x-hidden">
+  <!-- Wallpaper Background Preview -->
+  <div id="wallpaperBackground" class="fixed inset-0 bg-cover bg-center transition-opacity duration-500 opacity-0 pointer-events-none" style="z-index: 0;"></div>
 
-            <h3 class="block text-sm font-medium text-lq-textbeige opacity-75 pb-2 border-b border-lq-darkbeige mb-3">Your paper</h3>
-            <div class="grid grid-cols-3 gap-3 pb-6">
-              <div class="col-span-1 grid grid-cols-3 pb-2">
-                <div class="col-span-3">
-                  <label for="rollLengthInput" class="block text-sm font-medium text-lq-textbeige">
-                    Roll length
-                  </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number" name="rollLengthInput" id="rollLengthInput" class="input focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="1000">
-                    <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
-                      cm
-                    </span>
-                  </div>
-                </div>
-              </div>
+  <!-- Content Overlay -->
+  <div class="relative z-10 w-full flex flex-col items-center min-h-screen">
+    <div class="w-full max-w-2xl p-4 flex-grow flex flex-col justify-start md:justify-center">
+      <div class="rounded-lg bg-lq-beige shadow-xl overflow-hidden">
+        <div class="flex flex-col">
+          <div class="flex flex-col gap-2 items-center p-6">
+            <a href="https://living-quarters.co?utm_source=wallpaper-calculator-logo" target="_blank"><img src="/logo.svg" alt="Living Quarters" class="h-8" /></a>
+            <h3 class="font-semibold text-lg text-lq-darkgreen opacity-50">Wallpaper Calculator</h3>
+          </div>
 
-              <div class="col-span-1 grid grid-cols-3 gap-6 pb-2">
-                <div class="col-span-3">
-                  <label for="rollWidthInput" class="block text-sm font-medium text-lq-textbeige">
-                    Roll width
-                  </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number" name="rollWidthInput" id="rollWidthInput" class="input focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="70">
-                    <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
-                      cm
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="col-span-1 grid grid-cols-3 gap-6 pb-2">
-                <div class="col-span-3">
-                  <label for="repeatLengthInput" class="block text-sm font-medium text-lq-textbeige">
-                    Repeat Length
-                  </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number" name="repeatLengthInput" id="repeatLengthInput" class="input focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="70">
-                    <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
-                      cm
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
+          <!-- Tab Navigation -->
+          <div class="flex px-6 pt-6 gap-2">
+            <button type="button" id="wallpaperTab" class="preset-tab preset-tab-active px-4 py-2 rounded text-sm font-medium text-lq-textbeige bg-white border-2 border-lq-darkgreen">
+              Choose wallpaper
+            </button>
+            <button type="button" id="customTab" class="preset-tab px-4 py-2 rounded text-sm font-medium text-lq-textbeige bg-white border-2 border-lq-darkbeige hover:border-lq-darkgreen transition-colors">
+              Custom size
+            </button>
+          </div>
 
-            <h3 class="block text-sm font-medium text-lq-textbeige opacity-75 pb-2 border-b border-lq-darkbeige mb-3">Your walls</h3>
-            <div class="grid grid-cols-2 gap-3 pb-6">
-              <div class="col-span-1 grid grid-cols-3 gap-6 pb-2">
-                <div class="col-span-3">
-                  <label for="wallLengthInput" class="block text-sm font-medium text-lq-textbeige">
-                    Length of Wall
-                  </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number" name="wallLengthInput" id="wallLengthInput" class="input focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="600">
-                    <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
-                      cm
-                    </span>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-span-1 grid grid-cols-3 gap-6 pb-2">
-                <div class="col-span-3">
-                  <label for="wallHeightInput" class="block text-sm font-medium text-lq-textbeige">
-                    Wall height
-                  </label>
-                  <div class="mt-1 flex rounded-md shadow-sm">
-                    <input type="number" name="wallHeightInput" id="wallHeightInput" class="input focus:ring-indigo-500 focus:border-indigo-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="250">
-                    <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
-                      cm
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="pb-2 text-lq-textbeige">
-              <p class="break-words text-sm opacity-50">Share these dimensions: <span id="shareUrl"></span></p>
+          <!-- Wallpaper Tab Panel -->
+          <div id="wallpaperPanel" class="preset-panel">
+            <div class="px-6 pt-6">
+              <label for="presetSelect" class="block text-sm font-medium text-lq-textbeige mb-2">
+                Select a wallpaper
+              </label>
+              <select id="presetSelect" class="w-full rounded-md py-2 pl-2 pr-8 bg-white text-lq-textbeige focus:ring-0 focus:outline-none shadow-sm" disabled>
+                <option>Loading wallpapers...</option>
+              </select>
             </div>
           </div>
-          <div class="rounded bg-white shadow-xl flex flex-col">
-            <div class="flex-grow text-lq-textbeige p-6">
-              <div class="border-b py-3 border-lq-beige flex gap-2">
-                <div class="transform rotate-180 w-4 h-4 flex-shrink-0 mt-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-                  </svg>
+
+          <!-- Custom Size Tab Panel (Hidden by default) -->
+          <div id="customPanel" class="preset-panel hidden">
+            <div class="px-6 pt-6">
+              <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div class="col-span-1 grid grid-cols-3">
+                  <div class="col-span-3">
+                    <label for="rollLengthInput" class="block text-sm font-medium text-lq-textbeige">
+                      Roll length
+                    </label>
+                    <div class="mt-1 flex rounded-md shadow-sm">
+                      <input type="number" name="rollLengthInput" id="rollLengthInput" class="input focus:ring-green-500 focus:border-green-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="1000">
+                      <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
+                        cm
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <p class="">Each strip of paper needs to be <span id="stripLength">0</span>cm</p>
-              </div>
-              <div class="border-b py-3 border-lq-beige flex gap-2">
-                <div class="transform rotate-180 w-4 h-4 flex-shrink-0 mt-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-                  </svg>
+
+                <div class="col-span-1 grid grid-cols-3 gap-6 pb-2">
+                  <div class="col-span-3">
+                    <label for="rollWidthInput" class="block text-sm font-medium text-lq-textbeige">
+                      Roll width
+                    </label>
+                    <div class="mt-1 flex rounded-md shadow-sm">
+                      <input type="number" name="rollWidthInput" id="rollWidthInput" class="input focus:ring-green-500 focus:border-green-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="70">
+                      <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
+                        cm
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <p class="">You'll need <span id="stripsToCover">0</span> to cover your walls</p>
-              </div>
-              <div class="py-3 flex gap-2">
-                <div class="transform rotate-180 w-4 h-4 flex-shrink-0 mt-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-                  </svg>
+                <div class="col-span-1 grid grid-cols-3 gap-6 pb-2">
+                  <div class="col-span-3">
+                    <label for="repeatLengthInput" class="block text-sm font-medium text-lq-textbeige">
+                      Repeat Length
+                    </label>
+                    <div class="mt-1 flex rounded-md shadow-sm">
+                      <input type="number" name="repeatLengthInput" id="repeatLengthInput" class="input focus:ring-green-500 focus:border-green-500 flex-1 block w-full rounded-none rounded-l-md border-gray-300 p-2" value="70">
+                      <span class="inline-flex items-center px-3 rounded-r bg-lq-darkbeige text-gray-500 p-2">
+                        cm
+                      </span>
+                    </div>
+                  </div>
                 </div>
-                <p class="">Each roll of this wallpaper will fit <span id="stripsPerRoll">0</span> in it</p>
               </div>
             </div>
-            <div class="bg-lq-darkbeige p-6">
-              <p class="text-lg text-lq-textbeige">You'll need <span id="total" class="font-bold">0</span> in total</p>
+          </div>
+
+          <!-- Wall Dimensions Section (always visible) -->
+          <div id="wallsContainer" class="p-6"></div>
+          <button type="button" id="addWallBtn" class="px-6 py-2 text-sm opacity-50 text-lq-textbeige hover:text-lq-darkgreen transition-colors">
+            + Add another wall
+          </button>
+
+          <!-- Results Section -->
+          <div class="text-lg bg-lq-darkgreen p-6 mt-6 flex items-start md:items-center justify-between gap-3">
+            <p class="text-white">You'll need <span id="total" class="font-bold">0</span> <span class="hidden md:inline">in total</span></p>
+            <div id="buyLink" class="hidden">
+              <a href="#" id="buyLinkUrl" target="_blank" class="text-white hover:opacity-90 transition-opacity">
+                Buy →
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <footer class="py-4">
-      <p class="pt-4 text-lq-textbeige">A free tool by <a class="underline text-lq-darkgreen" href="https://living-quarters.co">Living Quarters</a></p>
-    </footer>
-    <script type="module" src="/main.js"></script>
-  </body>
+  </div>
+  <script type="module" src="/main.js"></script>
+</body>
 </html>

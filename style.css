@@ -1,3 +1,57 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: 'Category';
+  src: url('/fonts/category-regular-new.woff2') format('woff2'),
+       url('/fonts/category-regular-new.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  body {
+    font-family: 'Category', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+@layer components {
+
+  .input {
+    @apply focus:ring-green-500 focus:border-green-500 rounded-none rounded-l-md border-lq-darkbeige p-2;
+  }
+  .preset-card {
+    cursor: pointer;
+    position: relative;
+  }
+
+  .preset-card-active {
+    box-shadow: 0 0 0 3px rgba(81, 86, 53, 0.2);
+  }
+
+  .preset-card:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(81, 86, 53, 0.3);
+  }
+
+  .preset-tab {
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .preset-tab:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(81, 86, 53, 0.3);
+  }
+
+  #wallpaperBackground {
+    transform: scale(1.05);
+  }
+
+  /* Ensure UI elements remain readable over background */
+  .relative.z-10 {
+    backdrop-filter: blur(0px);
+  }
+}
