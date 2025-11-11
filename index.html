@@ -13,12 +13,12 @@
 
   <!-- Content Overlay -->
   <div class="relative z-10 w-full flex flex-col items-center min-h-screen">
-    <div class="w-full max-w-2xl p-4 flex-grow flex flex-col justify-center">
+    <div class="w-full max-w-2xl p-4 flex-grow flex flex-col justify-start md:justify-center">
       <div class="rounded-lg bg-lq-beige shadow-xl overflow-hidden">
         <div class="flex flex-col">
           <div class="flex flex-col gap-2 items-center p-6">
-            <img src="/logo.svg" alt="Living Quarters" class="h-8" />
-            <h3 class="font-semibold text-lg text-lq-darkgreen">Wallpaper Calculator</h3>
+            <a href="https://living-quarters.co?utm_source=wallpaper-calculator-logo" target="_blank"><img src="/logo.svg" alt="Living Quarters" class="h-8" /></a>
+            <h3 class="font-semibold text-lg text-lq-darkgreen opacity-50">Wallpaper Calculator</h3>
           </div>
 
           <!-- Tab Navigation -->
@@ -92,15 +92,15 @@
 
           <!-- Wall Dimensions Section (always visible) -->
           <div id="wallsContainer" class="p-6"></div>
-          <button type="button" id="addWallBtn" class="px-6 py-2 text-sm text-lq-textbeige">
+          <button type="button" id="addWallBtn" class="px-6 py-2 text-sm opacity-50 text-lq-textbeige hover:text-lq-darkgreen transition-colors">
             + Add another wall
           </button>
 
           <!-- Results Section -->
-          <div class="bg-lq-darkgreen p-4 mt-6 flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
-            <p class="text-lg text-white font-medium">You'll need <span id="total" class="font-bold">0</span> in total</p>
+          <div class="text-lg bg-lq-darkgreen p-6 mt-6 flex items-start md:items-center justify-between gap-3">
+            <p class="text-white">You'll need <span id="total" class="font-bold">0</span> <span class="hidden md:inline">in total</span></p>
             <div id="buyLink" class="hidden">
-              <a href="#" id="buyLinkUrl" target="_blank" class="text-white inline-block px-4 py-2 hover:opacity-90 transition-opacity font-medium">
+              <a href="#" id="buyLinkUrl" target="_blank" class="text-white hover:opacity-90 transition-opacity">
                 Buy →
               </a>
             </div>
