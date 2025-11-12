@@ -21,11 +21,11 @@ const CACHE_KEY = 'wallpaper_presets'
 const CACHE_TIMESTAMP_KEY = 'wallpaper_presets_timestamp'
 const CACHE_DURATION = 24 * 60 * 60 * 1000 // 24 hours in milliseconds
 
-function init_page() {
+async function init_page() {
   setupTabSwitching()
   setEventListeners()
   updateFromUrlParams()
-  loadWallpaperPresets()
+  await loadWallpaperPresets()
   initializeWalls()
   // setNumbers() will be called by handlePresetSelection after presets load
 }
