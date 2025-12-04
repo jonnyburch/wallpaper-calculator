@@ -749,7 +749,7 @@ function handlePresetSelection(event) {
       const buyLinkUrl = document.getElementById('buyLinkUrl')
       if (buyLink && buyLinkUrl) {
         // Construct product URL - adjust domain as needed
-        const productUrl = `https://living-quarters.co/products/${preset.handle}&utm_source=wallpaper-calculator-buy-link`
+        const productUrl = `https://living-quarters.co/products/${preset.handle}?utm_source=wallpaper-calculator-buy-link`
         buyLinkUrl.href = productUrl
         buyLink.classList.remove('hidden')
       }
